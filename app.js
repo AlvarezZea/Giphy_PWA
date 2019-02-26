@@ -1,4 +1,4 @@
-const apiKey = '<your giphy developer api key here>';
+const apiKey = 'your api key' ;
 const api = 'https://api.giphy.com/v1/gifs/trending'
 
 const main = document.querySelector('.container');
@@ -12,11 +12,12 @@ function createMeme(meme) {
               height='${meme.images.downsized_medium.height}'
               width='${meme.images.downsized_medium.width}'/>
         </a>
+        <p> Big Title: ${meme.title} </p> 
         </div>`
 }
 
 async function fetchTrending() {
-    const res = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${tlPpCosCdGx5ZiIGbpgmzlFtW99ps4yy}&limit=25`);
+    const res = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=25`);
     const json = await res.json();
 
     main.innerHTML = json.data.map(createMeme).join('\n');
